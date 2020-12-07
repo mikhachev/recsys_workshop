@@ -38,3 +38,9 @@
 ```shell
 docker run --rm -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work jupyter/datascience-notebook:python-3.8.6
 ```
+
+Если будем использовать mongo, redis - нужно подключить контейнер в общую сеть
+
+```shell
+docker run --rm --network data-mng_aviation_network -p 10000:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/work jupyter/datascience-notebook:python-3.8.6
+```
