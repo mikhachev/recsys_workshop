@@ -1,0 +1,34 @@
+{
+	"name": "Docker for recsys workshop",
+	"image": "recsys_workshop:dev",
+	"runArgs": [
+		"--init",
+		"--privileged"
+	],
+	"overrideCommand": true,
+
+	"workspaceMount": "source=${localWorkspaceFolder}/recsys_workshop,target=/srv/recsys_workshop/recsys_workshop,type=bind,consistency=delegated",
+	"workspaceFolder": "/srv/recsys_workshop",
+	// Use this environment variable if you need to bind mount your local source code into a new container.
+	// "remoteEnv": {
+	// 	"LOCAL_WORKSPACE_FOLDER": "/home/vscode"
+	// },
+
+	// Set *default* container specific settings.json values on container create.
+	"settings": { 
+		"terminal.integrated.defaultProfile.linux": "/bin/bash",
+		"terminal.integrated.cwd": "/srv/recsys_workshop",
+		"python.pythonPath": "/srv/recsys_workshop/recsys_workshop/:/srv/recsys_workshop/recsys_workshop/.venv/lib/python3.6/site-packages",
+        "python.autoComplete.extraPaths": ["/srv/recsys_workshop/recsys_workshop", "/srv/recsys_workshop/.venv/lib/"],
+        "python.languageServer": "Jedi"
+	},
+
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-azuretools.vscode-docker",
+		"ms-python.python"
+	],
+
+	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "recsys_workshop"
+}
